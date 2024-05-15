@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://havlgnnstmn6"]
+
+[ext_resource type="Script" path="res://Working Scenes/Celebration/Celebration.gd" id="1_yyfg7"]
+[ext_resource type="PackedScene" uid="uid://jfwajmrh6ca7" path="res://Particles/success_particles.tscn" id="2_5taih"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7cpp"]
+albedo_color = Color(0, 0.639216, 0.231373, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y5n2m"]
+size = Vector3(15, 1.898, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c6oew"]
+points = PackedVector3Array(7.5, 0.9475, 0.5, 7.5, 0.9475, -0.5, -7.5, 0.9475, 0.5, 7.5, -0.9475, 0.5, 7.5, -0.9475, -0.5, -7.5, 0.9475, -0.5, -7.5, -0.9475, 0.5, -7.5, -0.9475, -0.5)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02696, -12.482)
+mass = 100.0
+max_contacts_reported = 10
+contact_monitor = true
+script = ExtResource("1_yyfg7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23566, 0.326981)
+material_override = SubResource("StandardMaterial3D_m7cpp")
+mesh = SubResource("BoxMesh_y5n2m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23566, 0.326981)
+shape = SubResource("ConvexPolygonShape3D_c6oew")
+
+[node name="right" parent="." instance=ExtResource("2_5taih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17134, 2.23573, 0)
+
+[node name="centre" parent="." instance=ExtResource("2_5taih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-06, 2.23573, 0)
+
+[node name="left" parent="." instance=ExtResource("2_5taih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.171, 2.23526, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

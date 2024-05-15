@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://mw0hl02jvu8q"]
+
+[ext_resource type="Script" path="res://Working Scenes/Success_Box/success_box.gd" id="1_l16l1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xwqox"]
+albedo_color = Color(0, 0.639216, 0.231373, 1)
+
+[node name="Success_Box" type="CSGBox3D" groups=["Goal"]]
+material_override = SubResource("StandardMaterial3D_xwqox")
+use_collision = true
+size = Vector3(15, 1, 1)
+script = ExtResource("1_l16l1")
+file_path = "res://Levels/Level_1.tscn"

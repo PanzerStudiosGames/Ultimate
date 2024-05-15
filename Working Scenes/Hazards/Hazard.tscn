@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcnlkq7mxm3op"]
+
+[ext_resource type="Script" path="res://Working Scenes/Hazards/Hazard.gd" id="1_n7o4k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_trp1p"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_si7ks"]
+points = PackedVector3Array(0.05, 0.05, 0.05, 0.05, 0.05, -0.05, -0.05, 0.05, 0.05, 0.05, -0.05, 0.05, 0.05, -0.05, -0.05, -0.05, 0.05, -0.05, -0.05, -0.05, 0.05, -0.05, -0.05, -0.05)
+
+[node name="Hazard" type="AnimatableBody3D" groups=["Hazard"]]
+script = ExtResource("1_n7o4k")
+duration = 1.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_trp1p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_si7ks")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgougv3xnp07v"]
+
+[ext_resource type="Script" path="res://Working Scenes/Hazards/command_hazard.gd" id="1_0ql7n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hns07"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j3xq4"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="Command_Hazard" type="RigidBody3D"]
+script = ExtResource("1_0ql7n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hns07")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_j3xq4")
